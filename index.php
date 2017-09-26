@@ -29,14 +29,17 @@
   // Affiche les Billets
     try
     {
-      $bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'rita', 'wucly1978');
+      $bdd = new PDO('mysql:host=localhost;dbname=legrand;charset=utf8', 'root', 'wucly1978');
     }
     catch(Exception $e)
     {
             die('Erreur : '.$e->getMessage());
     }
 
-    $reponse = $bdd->query('SELECT * FROM legrand ORDER BY id DESC');
+    $reponse = $bdd->query('SELECT * FROM info_donnees info
+														INNER JOIN apres_peser ap
+														ON info.code_barre_peser = ap.code_barre_peser
+														ORDER BY ap.id DESC ');
 
     while ($donnees = $reponse->fetch()){
     ?>
@@ -51,8 +54,9 @@
          <em> Code barre de production : <?php echo htmlspecialchars($donnees['code_barre_production']); ?></em>
          <br />
          <em> Code barre de caisse : <?php echo htmlspecialchars($donnees['code_barre_caisse']); ?></em>
-        </p>
-
+        <br />
+				<em> Code barre de peser : <?php echo htmlspecialchars($donnees['code_barre_peser']); ?></em>
+				</p>
     </div>
     <?php
     }

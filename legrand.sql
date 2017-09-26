@@ -2,10 +2,10 @@
 -- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Sep 26, 2017 at 07:47 AM
--- Server version: 10.0.30-MariaDB
--- PHP Version: 5.6.30
+-- Hôte : localhost
+-- Généré le :  mar. 26 sep. 2017 à 14:11
+-- Version du serveur :  10.0.30-MariaDB
+-- Version de PHP :  5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,53 +19,79 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `test`
+-- Base de données :  `legrand`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `legrand`
+-- Structure de la table `apres_peser`
 --
 
-CREATE TABLE `legrand` (
+CREATE TABLE `apres_peser` (
   `id` int(11) NOT NULL,
-  `code_barre_production` varchar(255) NOT NULL,
-  `code_barre_caisse` varchar(255) NOT NULL,
   `code_barre_peser` varchar(255) NOT NULL,
   `peser` int(11) NOT NULL,
   `date_peser` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `legrand`
+-- Déchargement des données de la table `apres_peser`
 --
 
-INSERT INTO `legrand` (`id`, `code_barre_production`, `code_barre_caisse`, `code_barre_peser`, `peser`, `date_peser`) VALUES
-(1, 'ddcv', 'vcxvc', '0', 0, '2017-09-25 16:51:54'),
-(2, 'fvjdfklvn', 'fbfdvbfd', '0', 0, '2017-09-25 16:51:54'),
-(3, 'fhdsbbsd', 'vbxcvb vxc', '0', 0, '2017-09-25 16:51:54'),
-(4, 'fvjdfklvn', 'fbfdvbfd', '', 12, '2017-09-25 17:03:32');
+INSERT INTO `apres_peser` (`id`, `code_barre_peser`, `peser`, `date_peser`) VALUES
+(1, '2-15', 15, '2017-09-26 16:04:47');
+
+-- --------------------------------------------------------
 
 --
--- Indexes for dumped tables
+-- Structure de la table `info_donnees`
+--
+
+CREATE TABLE `info_donnees` (
+  `id` int(11) NOT NULL,
+  `code_barre_production` varchar(255) NOT NULL,
+  `code_barre_caisse` varchar(255) NOT NULL,
+  `code_barre_peser` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `info_donnees`
+--
+
+INSERT INTO `info_donnees` (`id`, `code_barre_production`, `code_barre_caisse`, `code_barre_peser`) VALUES
+(1, 'gfdg', 'dfgf', '2-15');
+
+--
+-- Index pour les tables déchargées
 --
 
 --
--- Indexes for table `legrand`
+-- Index pour la table `apres_peser`
 --
-ALTER TABLE `legrand`
+ALTER TABLE `apres_peser`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Index pour la table `info_donnees`
+--
+ALTER TABLE `info_donnees`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT for table `legrand`
+-- AUTO_INCREMENT pour la table `apres_peser`
 --
-ALTER TABLE `legrand`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;COMMIT;
+ALTER TABLE `apres_peser`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT pour la table `info_donnees`
+--
+ALTER TABLE `info_donnees`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
