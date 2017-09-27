@@ -20,6 +20,7 @@
       <p>
       <label for="code_barre_production"> Code_barre_production : </label><input type="text" name="code_barre_production" id="code_barre_production"/><br />
       <label for="code_barre_caisse"> Code_barre_caisse : </label><input type="text" name="code_barre_caisse" id="code_barre_caisse"/><br />
+			<label for="code_barre_peser"> Code_barre_peser : </label><input type="text" name="code_barre_peser" id="code_barre_peser"/><br />
       <label for="peser"> Peser / Kg : </label><input type="text" name="peser" id="peser"/><br />
         <br><input type="submit" value="Peser"/></br>
       </p>
