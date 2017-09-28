@@ -1,0 +1,58 @@
+body {
+  font-family: 'Raleway', sans-serif;
+  background-color: rgb(243,242,241);
+  font-size: 1.2em;
+}
+
+.legrandlogo {
+  max-width: 10em;
+  max-height: 4em;
+}
+
+#formulaire {
+  width:50%;
+  margin:1em;
+  position: relative;
+}
+
+#result {
+  width:50%;
+  margin:1em;
+}
+
+#result p {
+  background-color:#cdd1d0;
+  margin-top:0px;
+}
+
+fieldset {
+  padding: 1.2em;
+  margin: 2em;
+  border: 1px solid #96acb7;
+  background-color: #96acb7;
+  width: 40%;
+  display: inline-flex;
+}
+
+legend {
+  color: #465362;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+label {
+  margin-top: 0.5em;
+  display: block;
+}
+
+h1, h3
+{
+  text-align:center;
+}
+
+h3
+{
+    background-color:black;
+    color:white;
+    margin-bottom:0px;
+}

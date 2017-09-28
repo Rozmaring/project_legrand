@@ -3,18 +3,20 @@
 <head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="website/images">
-	  <link type="text/css" rel="stylesheet" href="style.css" />
+	  <link type="text/css" rel="stylesheet" href="css/style.css" />
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
   <title>Legrand</title>
 </head>
 
 <body>
 
-<section id="formulaire">
 
-    <fieldset>
 
-    <legend> Peser du panier : </legend>
+<fieldset>
+
+    <legend><img class="legrandlogo" src="photos/legrandlogo.png" alt="legrandlogo"/> Peser des rebuts </legend>
+
+		<section id="formulaire">
 
     <form action="peser.php" method='POST'>
       <p>
@@ -25,6 +27,10 @@
         <br><input type="submit" value="Peser"/></br>
       </p>
     </form>
+
+		</section>
+
+		<section id="result">
 
     <?php
   // Affiche les Billets
@@ -44,7 +50,7 @@
 
     while ($donnees = $reponse->fetch()){
     ?>
-    <div class="news">
+
         <h3>
             <em>le <?php echo $donnees['date_peser']; ?></em>
         </h3>
@@ -58,16 +64,15 @@
         <br />
 				<em> Code barre de peser : <?php echo htmlspecialchars($donnees['code_barre_peser']); ?></em>
 				</p>
-    </div>
+
     <?php
     }
     $reponse->closeCursor();
     ?>
 
+	</section>
 
   </fieldset>
-
-</section>
 
 </body>
 </html>
