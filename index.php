@@ -109,8 +109,8 @@
 						<tr>
 
 					<th scope="row"><?php echo $donnees['id']; ?></th>
-					<td><?php echo $donnees['date_peser']= date("Y-m-d"); ?></td>
-					<td><?php echo $donnees['date_peser']= date("H:i:s"); ?></td>
+					<td><?php echo $donnees['date_peser']= $date("Y-m-d"); ?></td>
+					<td><?php echo $donnees['date_peser']= $heure("H:i:s"); ?></td>
 					<td><?php echo htmlspecialchars($donnees['code_barre_production']); ?></td>
 					<td><?php echo htmlspecialchars($donnees['code_barre_caisse']); ?></td>
 					<td><?php echo htmlspecialchars($donnees['code_barre_peser']); ?></td>
