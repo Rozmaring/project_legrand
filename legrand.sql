@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `apres_peser` (
   `id` int(11) NOT NULL,
-  `code_barre_peser` varchar(255) NOT NULL,
+  `poids_brut_rebut` varchar(255) NOT NULL,
   `peser` int(11) NOT NULL,
   `date_peser` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -39,7 +39,7 @@ CREATE TABLE `apres_peser` (
 -- Déchargement des données de la table `apres_peser`
 --
 
-INSERT INTO `apres_peser` (`id`, `code_barre_peser`, `peser`, `date_peser`) VALUES
+INSERT INTO `apres_peser` (`id`, `poids_brut_rebut`, `peser`, `date_peser`) VALUES
 (1, '2-15', 15, '2017-09-26 16:04:47');
 
 -- --------------------------------------------------------
@@ -50,16 +50,16 @@ INSERT INTO `apres_peser` (`id`, `code_barre_peser`, `peser`, `date_peser`) VALU
 
 CREATE TABLE `info_donnees` (
   `id` int(11) NOT NULL,
-  `code_barre_production` varchar(255) NOT NULL,
-  `code_barre_caisse` varchar(255) NOT NULL,
-  `code_barre_peser` varchar(255) NOT NULL
+  `identification_rebut` varchar(255) NOT NULL,
+  `tare_caissette` varchar(255) NOT NULL,
+  `poids_brut_rebut` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `info_donnees`
 --
 
-INSERT INTO `info_donnees` (`id`, `code_barre_production`, `code_barre_caisse`, `code_barre_peser`) VALUES
+INSERT INTO `info_donnees` (`id`, `identification_rebut`, `tare_caissette`, `poids_brut_rebut`) VALUES
 (1, 'gfdg', 'dfgf', '2-15');
 
 --
