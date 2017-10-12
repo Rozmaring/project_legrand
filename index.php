@@ -91,8 +91,14 @@
 									<td><?php echo calculeNetRebut($donnees['poids_brut_rebut'],$donnees['tare_caissette']) ?></td>
 									<td><?php echo htmlspecialchars($donnees['poids_brut_rebut']); ?></td>
 									<td><?php echo htmlspecialchars($donnees['tare_caissette']); ?></td>
-									<td><?php echo $donnees['date_peser'] ?></td>
-									<td><?php echo $donnees['date_peser'] ?></td>
+									<td><?php
+									$db = $donnees['date_peser'];
+									$timestamp = strtotime($db);
+									echo date("d-m-Y", $timestamp);
+									 ?></td>
+									 <td><?php
+ 									echo date("H:i:s", $timestamp);
+ 									 ?></td>
 								</tr>
 							<?php
 								}
