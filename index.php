@@ -93,7 +93,7 @@
 									<td><?php
 									$db = $donnees['date_peser'];
 									$timestamp = strtotime($db);
-									echo date("m-d-Y", $timestamp);
+									echo date("d-m-Y", $timestamp);
 									 ?></td>
 									 <td><?php
  									echo date("H:i:s", $timestamp);
