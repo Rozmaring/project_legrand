@@ -47,10 +47,11 @@
 							<label for="InputName3">Tare caissette :</label>
 							<input type="text" class="form-control" id="InputName3" placeholder="tare_caissette" name="tare_caissette" disabled>
 						</div>
+						<div id="messageErreur">Veuillez scanner les <span style='color: red;'>trois codes barre</span>.</div>
 				</div>
 						<div class="col-xs-6 col-sm-6">
-							<br><button type="submit" name="valider" class="btn btn-default" disabled>Valider saisie</button></br>
-							<br><button type="reset" name="reset" class="btn btn-default">Réinitialiser</button></br>
+							<br><button type="submit" name="valider" class="btn btn-default">Valider saisie</button></br>
+							<br><button type="reset" name="reset" class="btn btn-default" onclick="renitMessageErreur()">Réinitialiser</button></br>
 						</div>
 					</form>
 			</div>
