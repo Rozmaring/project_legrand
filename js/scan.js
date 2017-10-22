@@ -1,24 +1,75 @@
-var codeBarre = "";
-document.onkeypress = recupererCodeBarre;
+var codeBarres = "";
+var onFocusCodeBarre = false;
+document.onkeypress = recupererCodeBarres;
 
-function recupererCodeBarre(event)
+function genereCodeBarre(codeBarre)
 {
-    if(event.keyCode == 13 || event.keyCode == "13")
+    var codeBarre = document.getElementById('codeText').value;
+
+    switch (codeBarre[0])
     {
-        submitControl(true);
+        case "1":
+            document.getElementById('codeBarre1').setAttribute("src","pi_barcode.php?type=C128&text=AUTO&code="+codeBarre);
+            break;
+        case "2":
+            document.getElementById('codeBarre2').setAttribute("src","pi_barcode.php?type=C128&text=AUTO&code="+codeBarre);
+            break;
+        case "3":
+            document.getElementById('codeBarre3').setAttribute("src","pi_barcode.php?type=C128&text=AUTO&code="+codeBarre);
+            break;
+        default:
+            document.getElementById('codeBarre1').setAttribute("src","pi_barcode.php?type=C128&text=AUTO&code="+codeBarre);
     }
-    codeBarre = codeBarre + event.key;
-    var count = codeBarre.length;
-    setTimeout(function(){ delai(count); }, 100);
-    if(event.keyCode == 32)
+}
+
+function recupererCodeBarres(event)
+{
+        if(event.keyCode == 13 || event.keyCode == "13")
+        {
+            submitControl(true);
+        }
+
+        codeBarres = codeBarres + event.key;
+        var count = codeBarres.length;
+        setTimeout(function(){ delai(count); },10);
+        if(event.keyCode == 32)
+        {
+            if(onFocusCodeBarre == false)
+            {
+                event.preventDefault();
+            }
+        }
+}
+
+function delai(count)
+{
+    if(count == codeBarres.length)
     {
-        event.preventDefault();
+        document.getElementById('derniereSaisie').innerHTML = codeBarres.replace(RegExp(" ","g"),"&nbsp;");
+
+        valideCodeBarres(codeBarres);
+        codeBarres = "";
+    }
+}
+/*$('body').keypress(function (e) {
+console.log(String.fromCharCode(touche.which));
+});*/
+
+function testInputName3(elem)
+{
+    if((/^[0-9]{1,2}[.][0-9]{1,3}$/).test(elem.nextSibling.value))
+    {
+        valideCodeBarres("3-   "+elem.nextSibling.value);
+    }
+    else
+    {
+        document.getElementById("messageErreur").innerHTML = "Vous devez entré un code barres valide ex<span style='color: red;'>(99.999 || 0.0)</span>"
     }
 }
 
 function renitMessageErreur()
 {
-    document.getElementById("messageErreur").innerHTML = "Veuillez scanner les <span style='color: red;'>trois codes barre</span>.";
+    document.getElementById("messageErreur").innerHTML = "Veuillez scanner les <span style='color: red;'>trois codes barres</span>.";
 }
 
 function checkErreurMessage()
@@ -53,11 +104,11 @@ function checkErreurMessage()
     }
     else if(((/^[1][-][ ]+/).test(code1)) == false && ((/^[2-3][-][ ]+[0-9]+[.][0-9]+$/).test(code2)) == false && ((/^[2-3][-][ ]+[0-9]+[.][0-9]+$/).test(code3)) == false)
     {
-        document.getElementById("messageErreur").innerHTML = "Veuillez scanner les <span style='color: red;'>trois codes barre</span>.";
+        document.getElementById("messageErreur").innerHTML = "Veuillez scanner les <span style='color: red;'>trois codes barres</span>.";
     }
     else
     {
-        document.getElementById("messageErreur").innerHTML = "Tout semble <span style='color: green;'>correct</span>";
+        document.getElementById("messageErreur").innerHTML = "Appuyez sur <span style='color: green;'>Valider saisie</span>";
     }
 }
 
@@ -88,21 +139,13 @@ function submitControl(enter)
     return false;
 }
 
-function delai(count)
+
+function valideCodeBarres(code)
 {
-    if(count == codeBarre.length)
+    if(code == "1-   test")
     {
-        valideCodeBarre(codeBarre);
-        codeBarre = "";
+        code = code + (parseInt(nombreProd)+1);
     }
-}
-/*$('body').keypress(function (e) {
-    console.log(String.fromCharCode(touche.which));
-});*/
-
-
-function valideCodeBarre(code)
-{
     if(code.match(/^[2-3][-][ ]+[0-9]+[.][0-9]+$/))
     {
         switch (code[0]) {

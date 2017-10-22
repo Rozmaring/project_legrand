@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-		<meta charset="UTF-8">
-    	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- Bootstrap -->
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link type="text/css" rel="stylesheet" href="css/style.css">
-		<title>Legrand</title>
+	<meta charset="UTF-8">
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Bootstrap -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="css/style.css">
+	<title>Legrand</title>
 </head>
 
 <body>
@@ -32,26 +32,37 @@
 		<div class="container-fluid">
 			<div class="row col-xs-12 col-md-12">
 				<div class="col-xs-6 col-sm-6">
-					<form action="peser.php" method='POST'  onsubmit="return submitControl(false)">
+					<form id="formPeser" action="peser.php" method='POST'  onsubmit="return submitControl(false)">
 						<div class="form-group">
 							<label for="InputName1">Identification rebut :</label>
+							<button type="button" onclick="valideCodeBarres('1-   test')">tester</button>
 							<input type="text" class="form-control" id="InputName1" placeholder="identification_rebut" name="identification_rebut" disabled>
 						</div>
 
 						<div class="form-group">
 							<label for="InputName2">Poids brut rebut :</label>
+							<button type="button" onclick="valideCodeBarres('2-   0.155')">tester</button>
 							<input type="text" class="form-control" id="InputName2" placeholder="poids_brut_rebut" name="poids_brut_rebut" disabled>
 						</div>
 
 						<div class="form-group">
 							<label for="InputName3">Tare caissette :</label>
+							<div><button type="button" onclick="testInputName3(this)">tester</button><input type="text" maxlength="15" value="0.000"></div>
 							<input type="text" class="form-control" id="InputName3" placeholder="tare_caissette" name="tare_caissette" disabled>
 						</div>
-						<div id="messageErreur">Veuillez scanner les <span style='color: red;'>trois codes barre</span>.</div>
+						<div id="messageErreur">Veuillez scanner les <span style='color: red;'>trois codes barres</span>.</div><br>
+						<a href="imprimer_code_barre.php" id="lienImpressionCodeBarre">Imprimer des codes barres</a>
 				</div>
 						<div class="col-xs-6 col-sm-6">
-							<br><button type="submit" name="valider" class="btn btn-default">Valider saisie</button></br>
-							<br><button type="reset" name="reset" class="btn btn-default" onclick="renitMessageErreur()">Réinitialiser</button></br>
+							<button id="test" type="submit" name="valider" class="btn btn-default" onclick="this.blur();">Valider saisie</button><br>
+							<button type="reset" name="reset" class="btn btn-default" onclick="renitMessageErreur();this.blur();">Réinitialiser</button><br>
+							<input id="codeText" type="text" placeholder="code Barres" onfocus="onFocusCodeBarre = true" onblur="onFocusCodeBarre = false">
+							<button type="button" class="btn btn-default" onclick="this.blur();genereCodeBarre();">Générer</button><br>
+							<img id="codeBarre1" src="pi_barcode.php?type=C128&text=AUTO&code=1-   test"><br><br>
+							<img id="codeBarre2" src="pi_barcode.php?type=C128&text=AUTO&code=2-   0.100"><br><br>
+							<img id="codeBarre3" src="pi_barcode.php?type=C128&text=AUTO&code=3-   0.043"><br>
+							<h3>Dernière saisie :<h3>
+							<p id="derniereSaisie"></p>
 						</div>
 					</form>
 			</div>
@@ -84,11 +95,14 @@
 									die('Erreur : '.$e->getMessage());
 								}
 								$reponse = $bdd->query('SELECT * FROM code_barre ORDER BY date_peser DESC ');
-								while ($donnees = $reponse->fetch()){
+								$nombreProd = 0;
+								while ($donnees = $reponse->fetch())
+								{
+									$nombreProd++
 							?>
 								<tr>
 									<td scope="row"><?php echo htmlspecialchars($donnees['identification_rebut']); ?></td>
-									<td><?php echo calculeNetRebut($donnees['poids_brut_rebut'],$donnees['tare_caissette']) ?></td>
+									<td><?php echo htmlspecialchars($donnees['poids_net_rebut']); ?></td>
 									<td><?php echo htmlspecialchars($donnees['poids_brut_rebut']); ?></td>
 									<td><?php echo htmlspecialchars($donnees['tare_caissette']); ?></td>
 									<td><?php
@@ -102,42 +116,8 @@
 								</tr>
 							<?php
 								}
+								echo "<script>nombreProd = '$nombreProd'</script>";
 								$reponse->closeCursor();
-
-								function calculeNetRebut($chiffre1,$chiffre2)
-								{
-									$arr1 = str_split($chiffre1);
-									$arr2 = str_split($chiffre2);
-									for($i=count($arr1)-1; $i >=0 ; $i--)
-									{
-										if(!is_numeric($arr1[$i]) && !($arr1[$i] == "."))
-										{
-											$arr1Final = "";
-											for($i=$i+1; $i < count($arr1); $i++)
-											{
-												$arr1Final .= $arr1[$i];
-											}
-											$i = -1;
-										}
-									}
-									for($i=count($arr2)-1; $i >=0 ; $i--)
-									{
-										if(!is_numeric($arr2[$i]) && !($arr2[$i] == "."))
-										{
-											$arr2Final = "";
-											for($i=$i+1; $i < count($arr2); $i++)
-											{
-												$arr2Final .= $arr2[$i];
-											}
-											$i = -1;
-										}
-									}
-									if(is_numeric($arr1Final) && is_numeric($arr2Final))
-									{
-										return $arr1Final - $arr2Final;
-									}
-									return "Erreur;)";
-								}
 							?>
 							</tbody>
 						</table>

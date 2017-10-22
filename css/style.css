@@ -12,9 +12,48 @@ body {
   margin-top: 2.5em;
 }
 
+@media print {
+    .hidden{
+        display: none;
+    }
+}
+
+.left{
+    float: left;
+}
+
+.right{
+    float: right;
+}
+
+.center{
+    position: fixed;
+    max-width: 500px;
+}
+
 #main{
   background: rgb(255,255,255);
   box-shadow: 3px 3px 8px hsl(0, 0%, 70%);
+}
+
+#lienImpressionCodeBarre{
+    font-size: 2em;
+    color: red;
+}
+
+#lienAppliCodeBarre{
+    width: 100%;
+    text-align: center;
+}
+
+#lienAppliCodeBarre a{
+    font-size: 2em;
+    color: red;
+}
+
+#lienAppliCodeBarre button{
+    width: 100px;
+    height: 50px;
 }
 
 li {
