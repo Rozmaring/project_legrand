@@ -51,16 +51,16 @@
 							<input type="text" class="form-control" id="InputName3" placeholder="tare_caissette" name="tare_caissette" disabled>
 						</div>
 						<div id="messageErreur">Veuillez scanner les <span style='color: red;'>trois codes barres</span>.</div><br>
+						<button id="test" type="submit" name="valider" class="btn btn-default" onclick="this.blur();">Valider saisie</button>
+						<button type="reset" name="reset" class="btn btn-default" onclick="renitMessageErreur();this.blur();">Réinitialiser</button><br>
 						<a href="imprimer_code_barre.php" id="lienImpressionCodeBarre">Imprimer des codes barres</a>
 				</div>
 						<div class="col-xs-6 col-sm-6">
-							<button id="test" type="submit" name="valider" class="btn btn-default" onclick="this.blur();">Valider saisie</button><br>
-							<button type="reset" name="reset" class="btn btn-default" onclick="renitMessageErreur();this.blur();">Réinitialiser</button><br>
-							<input id="codeText" type="text" placeholder="code Barres" onfocus="onFocusCodeBarre = true" onblur="onFocusCodeBarre = false">
+							<input id="codeText" type="text" placeholder="code Barres" onfocus="onFocusCodeBarre = true" onblur="onFocusCodeBarre = false"><br>
 							<button type="button" class="btn btn-default" onclick="this.blur();genereCodeBarre();">Générer</button><br>
-							<img id="codeBarre1" src="pi_barcode.php?type=C128&text=AUTO&code=1-   test"><br><br>
-							<img id="codeBarre2" src="pi_barcode.php?type=C128&text=AUTO&code=2-   0.100"><br><br>
-							<img id="codeBarre3" src="pi_barcode.php?type=C128&text=AUTO&code=3-   0.043"><br>
+							<img id="codeBarre1" src="pi_barcode.php?type=C128&showtype=Y&readable=Y&code=1-   test"><br><br>
+							<img id="codeBarre2" src="pi_barcode.php?type=C128&showtype=Y&readable=Y&code=2-   0.100"><br><br>
+							<img id="codeBarre3" src="pi_barcode.php?type=C128&showtype=Y&readable=Y&code=3-   0.043"><br>
 							<h3>Dernière saisie :<h3>
 							<p id="derniereSaisie"></p>
 						</div>

@@ -1027,7 +1027,7 @@ if (strpos($_SERVER['PHP_SELF'], 'pi_barcode.php'))
 
 	// ***** Autres arguments
 	if( $readable == 'N' ) $objCode->setText('');
-	//if( $showtype == 'N' ) $objCode->hideCodeType();
+	if( $showtype == 'N' ) $objCode->hideCodeType();
 
 	if( $color )
 	{
@@ -1038,7 +1038,6 @@ if (strpos($_SERVER['PHP_SELF'], 'pi_barcode.php'))
 
 	$objCode -> setType($type);
 	$objCode -> setCode($code);
-	$objCode -> setText($text);
 
 	$objCode -> showBarcodeImage();
 }

@@ -61,6 +61,6 @@
     function genereCodeBarre(elem)
     {
         var codeBarre = document.getElementById('codeText'+elem).value;
-        document.getElementById('codeBarre'+elem).setAttribute("src","pi_barcode.php?type=C128&text=AUTO&code="+codeBarre);
+        document.getElementById('codeBarre'+elem).setAttribute("src","pi_barcode.php?type=C128&showtype=Y&readable=Y&code="+codeBarre);
     }
 </script>

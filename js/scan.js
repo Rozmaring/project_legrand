@@ -9,16 +9,16 @@ function genereCodeBarre(codeBarre)
     switch (codeBarre[0])
     {
         case "1":
-            document.getElementById('codeBarre1').setAttribute("src","pi_barcode.php?type=C128&text=AUTO&code="+codeBarre);
+            document.getElementById('codeBarre1').setAttribute("src","pi_barcode.php?type=C128&showtype=Y&readable=Y&code="+codeBarre);
             break;
         case "2":
-            document.getElementById('codeBarre2').setAttribute("src","pi_barcode.php?type=C128&text=AUTO&code="+codeBarre);
+            document.getElementById('codeBarre2').setAttribute("src","pi_barcode.php?type=C128&showtype=Y&readable=Y&code="+codeBarre);
             break;
         case "3":
-            document.getElementById('codeBarre3').setAttribute("src","pi_barcode.php?type=C128&text=AUTO&code="+codeBarre);
+            document.getElementById('codeBarre3').setAttribute("src","pi_barcode.php?type=C128&showtype=Y&readable=Y&code="+codeBarre);
             break;
         default:
-            document.getElementById('codeBarre1').setAttribute("src","pi_barcode.php?type=C128&text=AUTO&code="+codeBarre);
+            document.getElementById('codeBarre1').setAttribute("src","pi_barcode.php?type=C128&showtype=Y&readable=Y&code="+codeBarre);
     }
 }
 
