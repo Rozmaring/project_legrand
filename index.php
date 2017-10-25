@@ -35,36 +35,31 @@
 					<form id="formPeser" action="peser.php" method='POST'  onsubmit="return submitControl(false)">
 						<div class="form-group">
 							<label for="InputName1">Identification rebut :</label>
-							<button type="button" onclick="valideCodeBarres('1-   test')">tester</button>
+							<button type="button" onclick="valideCodeBarres('1-   test')" hidden>tester</button>
 							<input type="text" class="form-control" id="InputName1" placeholder="identification_rebut" name="identification_rebut" disabled>
 						</div>
 
 						<div class="form-group">
 							<label for="InputName2">Poids brut rebut :</label>
-							<button type="button" onclick="valideCodeBarres('2-   0.155')">tester</button>
+							<button type="button" onclick="valideCodeBarres('2-   0.155')" hidden>tester</button>
 							<input type="text" class="form-control" id="InputName2" placeholder="poids_brut_rebut" name="poids_brut_rebut" disabled>
 						</div>
 
 						<div class="form-group">
 							<label for="InputName3">Tare caissette :</label>
-							<div><button type="button" onclick="testInputName3(this)">tester</button><input type="text" maxlength="15" value="0.000"></div>
+							<div><button type="button" onclick="testInputName3(this)" hidden>tester</button><input type="text" maxlength="15" value="0.000" hidden></div>
 							<input type="text" class="form-control" id="InputName3" placeholder="tare_caissette" name="tare_caissette" disabled>
 						</div>
 						<div id="messageErreur">Veuillez scanner les <span style='color: red;'>trois codes barres</span>.</div><br>
 						<button id="test" type="submit" name="valider" class="btn btn-default" onclick="this.blur();">Valider saisie</button>
 						<button type="reset" name="reset" class="btn btn-default" onclick="renitMessageErreur();this.blur();">Réinitialiser</button><br>
-						<a href="imprimer_code_barre.php" id="lienImpressionCodeBarre">Imprimer des codes barres</a>
-				</div>
-						<div class="col-xs-6 col-sm-6">
-							<input id="codeText" type="text" placeholder="code Barres" onfocus="onFocusCodeBarre = true" onblur="onFocusCodeBarre = false"><br>
-							<button type="button" class="btn btn-default" onclick="this.blur();genereCodeBarre();">Générer</button><br>
-							<img id="codeBarre1" src="pi_barcode.php?type=C128&showtype=Y&readable=Y&code=1-   test"><br><br>
-							<img id="codeBarre2" src="pi_barcode.php?type=C128&showtype=Y&readable=Y&code=2-   0.100"><br><br>
-							<img id="codeBarre3" src="pi_barcode.php?type=C128&showtype=Y&readable=Y&code=3-   0.043"><br>
-							<h3>Dernière saisie :<h3>
-							<p id="derniereSaisie"></p>
-						</div>
 					</form>
+				</div>
+				<div class="col-xs-6 col-sm-6">
+					<a href="imprimer_code_barre.php" id="lienImpressionCodeBarre">Imprimer des codes barres</a>
+					<h3>Dernière saisie :<h3>
+					<p id="derniereSaisie"></p>
+				</div>
 			</div>
 		</div>
 		<div class="container-fluid">
@@ -79,8 +74,8 @@
 									<th>Poids net rebut</th>
 									<th>Poids brut rebut</th>
 									<th>Tare caissette</th>
-									<th>Date de peser</th>
-									<th>Heure de peser</th>
+									<th>Date de pesée</th>
+									<th>Heure de pesée</th>
 								</tr>
 							</thead>
 							<tbody>

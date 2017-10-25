@@ -2,26 +2,6 @@ var codeBarres = "";
 var onFocusCodeBarre = false;
 document.onkeypress = recupererCodeBarres;
 
-function genereCodeBarre(codeBarre)
-{
-    var codeBarre = document.getElementById('codeText').value;
-
-    switch (codeBarre[0])
-    {
-        case "1":
-            document.getElementById('codeBarre1').setAttribute("src","pi_barcode.php?type=C128&showtype=Y&readable=Y&code="+codeBarre);
-            break;
-        case "2":
-            document.getElementById('codeBarre2').setAttribute("src","pi_barcode.php?type=C128&showtype=Y&readable=Y&code="+codeBarre);
-            break;
-        case "3":
-            document.getElementById('codeBarre3').setAttribute("src","pi_barcode.php?type=C128&showtype=Y&readable=Y&code="+codeBarre);
-            break;
-        default:
-            document.getElementById('codeBarre1').setAttribute("src","pi_barcode.php?type=C128&showtype=Y&readable=Y&code="+codeBarre);
-    }
-}
-
 function recupererCodeBarres(event)
 {
         if(event.keyCode == 13 || event.keyCode == "13")
