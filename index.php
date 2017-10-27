@@ -56,9 +56,8 @@
 					</form>
 				</div>
 				<div class="col-xs-6 col-sm-6">
-					<a href="imprimer_code_barre.php" id="lienImpressionCodeBarre">Imprimer des codes barres</a>
 					<h3>Dernière saisie :<h3>
-					<p id="derniereSaisie"></p>
+					<pre id="derniereSaisie"></pre>
 				</div>
 			</div>
 		</div>

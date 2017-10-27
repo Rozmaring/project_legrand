@@ -11,7 +11,7 @@ function recupererCodeBarres(event)
 
         codeBarres = codeBarres + event.key;
         var count = codeBarres.length;
-        setTimeout(function(){ delai(count); },10);
+        setTimeout(function(){ delai(count); },100);
         if(event.keyCode == 32)
         {
             if(onFocusCodeBarre == false)
@@ -25,8 +25,8 @@ function delai(count)
 {
     if(count == codeBarres.length)
     {
-        document.getElementById('derniereSaisie').innerHTML = codeBarres.replace(RegExp(" ","g"),"&nbsp;");
-
+        document.getElementById('derniereSaisie').innerHTML = codeBarres.replace(RegExp("Spacebar","g")," ");
+        codeBarres = codeBarres.replace(RegExp("Spacebar","g")," ");
         valideCodeBarres(codeBarres);
         codeBarres = "";
     }
