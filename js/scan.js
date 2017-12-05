@@ -11,7 +11,7 @@ function recupererCodeBarres(event)
 
         codeBarres = codeBarres + event.key;
         var count = codeBarres.length;
-        setTimeout(function(){ delai(count); },100);
+        setTimeout(function(){ delai(count); },20);
         if(event.keyCode == 32)
         {
             if(onFocusCodeBarre == false)

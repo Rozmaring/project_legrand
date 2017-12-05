@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+	<?php date_default_timezone_set("Europe/Paris"); ?>
 	<meta charset="UTF-8">
 	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -58,6 +59,7 @@
 				<div class="col-xs-6 col-sm-6">
 					<h3>Dernière saisie :<h3>
 					<pre id="derniereSaisie"></pre>
+					<button type="button" onclick="window.location.assign('mysql.php');">MySQL sous CSV</button>
 				</div>
 			</div>
 		</div>
