@@ -10,7 +10,7 @@ catch(Exception $e)
 }
 $reponse = $bdd->query('SELECT * FROM code_barre ORDER BY date_peser DESC ');
 
-$xls_output = "identification_rebut;poids_net_rebut;poids_brut_rebut;tare_caissette;date_pesée;heure_pesée";
+$xls_output = "identification_rebut;poids_net_rebut;poids_brut_rebut;tare_caissette;date_pesee;heure_pesee";
 $xls_output .= "\n";
 
 while($donnees = $reponse->fetch())
